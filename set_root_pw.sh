@@ -13,8 +13,8 @@ echo "=> Setting a password to the docker user"
 
 adduser --disabled-password --gecos "" $1
 adduser $1 x2gouser
-sudo -u $1 export LANG C.UTF-8
-sudo -u $1 export PATH="/opt/conda/bin:$PATH"
+sudo -u $1 echo LANG=C.UTF-8 >> /home/$1/.profile
+sudo -u $1 echo PATH="/opt/conda/bin:$PATH" >> /home/$1/.profile
 
 echo "Change password for $1"
 if [[ $2 ]]; then

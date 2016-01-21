@@ -57,5 +57,6 @@ Select the Session TYPE as : LXDE , this is very important
 ####http://bmullan.wordpress.com/
 ####https://github.com/rogaha/docker-desktop
 ####https://github.com/tutumcloud/tutum-ubuntu
+####https://github.com/paimpozhil/DockerX2go
 
 #### Docker.io && x2go.org
