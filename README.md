@@ -50,7 +50,7 @@ http://wiki.x2go.org/doku.php/doc:installation:x2goclient
 Connect to your server with docker hosts's IP , Port : 2222 , Username : User , Password : ( look at docker logs for container)
 
 Select the Session TYPE as : LXDE , this is very important
-
+You may select the Session TYPE as : Internet browser, in this case x2go will start only chrome.
 
 ###Credits:
 

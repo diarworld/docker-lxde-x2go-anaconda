@@ -4,19 +4,18 @@ MAINTAINER CleverDATA "support@cleverdata.ru"
 ENV DEBIAN_FRONTEND noninteractive
 
 RUN apt-get update -y && sudo apt-get upgrade -y \
-&&  apt-get install -y openssh-server lxde software-properties-common python-software-properties \
+&&  apt-get install -y openssh-server software-properties-common python-software-properties \
 &&	add-apt-repository ppa:x2go/stable \
 &&  apt-get update -y \
-&&  apt-get install -y x2goserver x2goserver-xsession x2golxdebindings pwgen libcurl3 libappindicator1 fonts-liberation
+&&  apt-get install -y x2goserver x2goserver-xsession x-window-system pwgen libcurl3 libappindicator1 fonts-liberation
+&&  apt-get install gconf-service libasound2 libgconf-2-4 libnspr4 libnss3 libpango1.0-0 libxss1 xdg-utils -y
 
-RUN wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-
-RUN dpkg -i google-chrome*.deb \
+RUN wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb \
+&&  dpkg -i google-chrome*.deb \
+&&  apt-get install -f \
 &&  rm -rf google-chrome*.deb
 
-RUN apt-get install -f
-
-RUN ln -s /chrome.sh /usr/bin/chrome
+RUN ln -s /chrome.sh /usr/bin/chrome && ln -s /chrome.sh /usr/bin/chromium-browser
 
 RUN mkdir -p /var/run/sshd && sed -i "s/UsePrivilegeSeparation.*/UsePrivilegeSeparation no/g" /etc/ssh/sshd_config && sed -i "s/UsePAM.*/UsePAM no/g" /etc/ssh/sshd_config && \
     sed -i "s/PermitRootLogin.*/PermitRootLogin yes/g" /etc/ssh/sshd_config && \
